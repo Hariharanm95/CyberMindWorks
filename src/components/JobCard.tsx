@@ -103,22 +103,26 @@ export const JobCard = ({
       </div>
 
       {/* Info Row with icons */}
-      <div className="flex gap-1 mt-4 text-gray-600 text-xs">
-        <span className="flex items-center gap-1">
+      <div className="flex justify-between mt-4 text-gray-600 text-xs w-full">
+        {/* Left (Experience) */}
+        <div className="flex items-center gap-1">
           <FaUser size={12} />
           {experience}
-        </span>
-        <span> | </span>
-        <span className="flex items-center gap-1">
+        </div>
+
+        {/* Center (Location) */}
+        <div className="flex items-center gap-1 mx-auto">
           <MdLocationOn size={14} />
           {location}
-        </span>
-        <span> | </span>
-        <span className="flex items-center gap-1">
+        </div>
+
+        {/* Right (LPA) */}
+        <div className="flex items-center gap-1">
           <FaLayerGroup size={12} />
           {lackPerAnnum}
-        </span>
+        </div>
       </div>
+
 
       {/* Posted Time */}
       <div className="absolute top-4 right-4 bg-blue-100 px-2 py-1 rounded-[4px] text-xs text-black">

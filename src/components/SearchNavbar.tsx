@@ -73,7 +73,7 @@ export default function SearchNavbar({ filters, setFilters }: SearchNavbarProps)
         <div className="w-[248.5px]">
           {/* Label + Values side by side */}
           <div className="flex justify-between items-center mb-2">
-            <div className="text-xs font-medium text-black">Salary Per Month</div>
+            <div className="text-xs text-black">Salary Per Month</div>
             <div className="text-xs text-black">
               ₹{(filters.salary[0] / 1000).toFixed(0)}k - ₹{(filters.salary[1] / 1000).toFixed(0)}k
             </div>
