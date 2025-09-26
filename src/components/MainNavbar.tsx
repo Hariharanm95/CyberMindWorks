@@ -19,7 +19,7 @@ export default function MainNavbar({ onCreateJobClick }: MainNavbarProps) {
         </div>
 
         {/* Links */}
-        <ul className="flex items-center space-x-6 text-gray-800 text-sm">
+        <ul className="flex items-center space-x-6 text-gray-800 text-xs">
           <li className="cursor-pointer hover:text-purple-600">Home</li>
           <li className="cursor-pointer hover:text-purple-600">Find Jobs</li>
           <li className="cursor-pointer hover:text-purple-600">Find Talents</li>

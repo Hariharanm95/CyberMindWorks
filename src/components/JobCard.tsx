@@ -158,7 +158,7 @@ export const JobCard = ({
 
       {/* Apply Button */}
 <button
-  className="absolute text-xs bottom-4 left-4 w-[284px] text-white font-bold py-3 rounded-[10px] hover:bg-[#008FCC] transition"
+  className="absolute text-xs mt-2 bottom-4 left-4 w-[284px] text-white font-bold py-3 rounded-[10px] hover:bg-[#008FCC] transition"
   style={{
     background: "#00AAFF",
     border: "1px solid #00AAFF",

@@ -20,28 +20,28 @@ export default function SearchNavbar({ filters, setFilters }: SearchNavbarProps)
 
   return (
     <div className="bg-white shadow-sm h-45 flex items-end pb-3">
-      <div className="max-w-7xl mx-auto flex items-center py-4 px-6 gap-6 text-gray-700 w-full">
-        
+      <div className="max-w-7xl mx-auto flex items-center py-4 px-6 gap-6 w-full ">
+
         {/* Search Input */}
-        <div className="flex items-center gap-2 w-64">
+        <div className="flex items-center gap-2 w-[334px] text-[#686868]">
           <FiSearch size={18} />
           <input
             type="text"
             placeholder="Search By Job Title, Role"
             value={filters.search}
             onChange={(e) => setFilters((f: any) => ({ ...f, search: e.target.value }))}
-            className="outline-none w-full text-sm"
+            className="outline-none w-full text-xs text-[#686868]"
           />
         </div>
         <div className="h-6 w-px bg-gray-300"></div>
 
         {/* Preferred Location */}
-        <div className="flex items-center gap-2 w-48">
+        <div className="flex items-center gap-2 w-[334px] text-[#686868]">
           <FiMapPin size={18} />
           <select 
             value={filters.location}
             onChange={(e) => setFilters((f: any) => ({ ...f, location: e.target.value }))}
-            className="outline-none w-full bg-transparent text-sm"
+            className="outline-none w-full bg-transparent text-xs text-[#686868]"
           >
             <option value="">Preferred Location</option>
             <option>Bangalore</option>
@@ -53,12 +53,12 @@ export default function SearchNavbar({ filters, setFilters }: SearchNavbarProps)
         <div className="h-6 w-px bg-gray-300"></div>
 
         {/* Job Type */}
-        <div className="flex items-center gap-2 w-40">
+        <div className="flex items-center gap-2 w-[334px] text-[#686868]">
           <FiUsers size={18} />
           <select 
             value={filters.jobType}
             onChange={(e) => setFilters((f: any) => ({ ...f, jobType: e.target.value }))}
-            className="outline-none w-full bg-transparent text-sm"
+            className="outline-none w-full bg-transparent text-xs text-[#686868]"
           >
             <option value="">Job type</option>
             <option>Full_Time</option>
@@ -70,12 +70,17 @@ export default function SearchNavbar({ filters, setFilters }: SearchNavbarProps)
         <div className="h-6 w-px bg-gray-300"></div>
 
         {/* Salary Slider */}
-        <div className="flex items-center gap-3 flex-1">
-          <div className="text-sm">Salary Per Month</div>
-          <div className="text-sm text-gray-500">
-            ₹{(filters.salary[0] / 1000).toFixed(0)}k - ₹{(filters.salary[1] / 1000).toFixed(0)}k
+        <div className="w-[248.5px]">
+          {/* Label + Values side by side */}
+          <div className="flex justify-between items-center mb-2">
+            <div className="text-xs font-medium text-black">Salary Per Month</div>
+            <div className="text-xs text-black">
+              ₹{(filters.salary[0] / 1000).toFixed(0)}k - ₹{(filters.salary[1] / 1000).toFixed(0)}k
+            </div>
           </div>
-          <div className="flex-1 px-4">
+
+          {/* Fixed width Range bar */}
+          <div style={{ width: "248.5px" }}>
             <Range
               step={STEP}
               min={MIN}
@@ -84,30 +89,37 @@ export default function SearchNavbar({ filters, setFilters }: SearchNavbarProps)
               onChange={(values) => setFilters((f: any) => ({ ...f, salary: values }))}
               renderTrack={({ props, children }) => (
                 <div
-                  {...props} // ✅ no key destructuring
-                  className="h-1 w-full rounded"
+                  {...props}
+                  className="h-0.5 rounded"
                   style={{
+                    width: "100%",
                     background: `linear-gradient(
                       to right,
                       #d1d5db ${(filters.salary[0] - MIN) / (MAX - MIN) * 100}%,
                       black ${(filters.salary[0] - MIN) / (MAX - MIN) * 100}%,
                       black ${(filters.salary[1] - MIN) / (MAX - MIN) * 100}%,
                       #d1d5db ${(filters.salary[1] - MIN) / (MAX - MIN) * 100}%
-                    )`
+                    )`,
                   }}
                 >
                   {children}
                 </div>
               )}
-              renderThumb={({ props }) => (
-                <div
-                  {...props} // ✅ no key destructuring
-                  className="h-4 w-4 bg-black rounded-full cursor-pointer"
-                />
-              )}
+              renderThumb={({ props }) => {
+                  const { key, ...rest } = props;
+                  return (
+                    <div
+                      key={key}
+                      {...rest}
+                      className="h-3 w-3 bg-white border-4 border-black rounded-full cursor-pointer"
+                    />
+                  );
+                }}
+
             />
           </div>
         </div>
+
       </div>
     </div>
   );

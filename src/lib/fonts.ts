@@ -4,10 +4,11 @@ export const satoshi = localFont({
   src: [
 
     {
-      path: '../../public/fonts/Satoshi-Bold.woff2',
-      weight: '700', // bold weight
+      path: '../../public/fonts/Satoshi-Variable.woff2',
+      weight: '600',
       style: 'normal',
     },
+
   ],
   variable: '--font-satoshi',
 });
