@@ -3,7 +3,6 @@ import React from "react";
 import { FaBuilding, FaUser, FaLayerGroup } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 
-
 interface JobCardProps {
   jobTitle: string;
   companyName: string;
@@ -15,10 +14,9 @@ interface JobCardProps {
   jobDescription: string;
   requirements: string;
   responsibilities?: string;
-  applicationDeadline?: string | null; 
+  applicationDeadline?: string | null;
   createdAt?: string | Date;
 }
-
 
 function timeAgo(dateString: string | Date) {
   const now = new Date();
@@ -43,13 +41,10 @@ function timeAgo(dateString: string | Date) {
 }
 
 function getDomainFromCompanyName(companyName: string): string {
-  // Basic naive way: take last word, make lowercase, add .com
-  // You can customize or provide domains in your data for better accuracy
   const parts = companyName.trim().split(" ");
   const lastPart = parts[parts.length - 1].toLowerCase();
   return lastPart + ".com";
 }
-
 
 export const JobCard = ({
   jobTitle,
@@ -76,22 +71,23 @@ export const JobCard = ({
     .slice(0, 3);
 
   return (
-    <div className="relative w-[326px] h-[340px] bg-white rounded-xl overflow-hidden shadow-md p-4">
-      {/* Company Placeholder */}
-      <div className="w-[63px] h-[62px] flex items-center justify-center bg-gray-200 rounded-[13px] overflow-hidden">
+    <div className="relative w-[326px] h-[340px] bg-white rounded-2xl overflow-hidden shadow-md p-4">
+      {/* Company Logo */}
+      <div className="w-[63px] h-[62px] flex items-center justify-center bg-gray-100 rounded-[13px] overflow-hidden">
         {!imgError ? (
           <img
             src={logoUrl}
             alt={`${companyName} logo`}
-            className="object-contain w-full h-full"
+            className="w-12 h-12 object-contain rounded-full" // 👈 makes the logo circular
             onError={() => setImgError(true)}
           />
         ) : (
-          <div className="flex items-center justify-center w-full h-full bg-blue-600 text-white font-bold text-2xl rounded-[13px]">
+          <div className="flex items-center justify-center w-12 h-12 bg-blue-600 text-white font-bold text-lg rounded-full">
             {initials}
           </div>
         )}
       </div>
+
 
       {/* Job Title */}
       <div className="mt-6 font-bold text-black text-lg">{jobTitle}</div>
@@ -102,75 +98,67 @@ export const JobCard = ({
         <span>{companyName}</span>
       </div>
 
-      {/* Info Row with icons */}
+      {/* Info Row */}
       <div className="flex justify-between mt-4 text-gray-600 text-xs w-full">
-        {/* Left (Experience) */}
         <div className="flex items-center gap-1">
           <FaUser size={12} />
           {experience}
         </div>
-
-        {/* Center (Location) */}
         <div className="flex items-center gap-1 mx-auto">
           <MdLocationOn size={14} />
           {location}
         </div>
-
-        {/* Right (LPA) */}
         <div className="flex items-center gap-1">
           <FaLayerGroup size={12} />
           {lackPerAnnum}
         </div>
       </div>
 
-
       {/* Posted Time */}
-      <div className="absolute top-4 right-4 bg-blue-100 px-2 py-1 rounded-[4px] text-xs text-black">
+      <div className="absolute top-4 right-4 bg-blue-200 px-2 py-1 rounded-md text-xs text-black">
         {createdAt ? timeAgo(createdAt) : "Posted Recently"}
       </div>
 
-{/* Description */}
-<ul className="mt-4 text-gray-600 text-xs list-disc pl-5 marker:text-gray-600">
-  {(jobDescription.length > 80
-    ? jobDescription.slice(0, 80) + "..."
-    : jobDescription
-  )
-    .split(". ")
-    .filter(Boolean)
-    .map((desc, idx) => (
-      <li key={idx} className="whitespace-normal leading-snug">
-        {desc.trim()}.
-      </li>
-    ))}
-</ul>
+      {/* Description */}
+      <ul className="mt-4 text-gray-600 text-xs list-disc pl-5 marker:text-gray-600">
+        {(jobDescription.length > 80
+          ? jobDescription.slice(0, 80) + "..."
+          : jobDescription
+        )
+          .split(". ")
+          .filter(Boolean)
+          .map((desc, idx) => (
+            <li key={idx} className="whitespace-normal leading-snug">
+              {desc.trim()}.
+            </li>
+          ))}
+      </ul>
 
-{/* Requirements */}
-<ul className="mt-2 text-gray-600 text-xs list-disc pl-5 marker:text-gray-600">
-  {(requirements.length > 80
-    ? requirements.slice(0, 80) + "..."
-    : requirements
-  )
-    .split(". ")
-    .filter(Boolean)
-    .map((req, idx) => (
-      <li key={idx} className="whitespace-normal leading-snug">
-        {req.trim()}.
-      </li>
-    ))}
-</ul>
-
+      {/* Requirements */}
+      <ul className="mt-2 text-gray-600 text-xs list-disc pl-5 marker:text-gray-600">
+        {(requirements.length > 80
+          ? requirements.slice(0, 80) + "..."
+          : requirements
+        )
+          .split(". ")
+          .filter(Boolean)
+          .map((req, idx) => (
+            <li key={idx} className="whitespace-normal leading-snug">
+              {req.trim()}.
+            </li>
+          ))}
+      </ul>
 
       {/* Apply Button */}
-<button
-  className="absolute text-xs mt-2 bottom-4 left-4 w-[284px] text-white font-bold py-3 rounded-[10px] hover:bg-[#008FCC] transition"
-  style={{
-    background: "#00AAFF",
-    border: "1px solid #00AAFF",
-  }}
->
-  Apply Now
-</button>
-
+      <button
+        className="absolute text-xs mt-2 bottom-4 left-4 w-[284px] text-white font-bold py-3 rounded-xl hover:bg-[#008FCC] transition"
+        style={{
+          background: "#00AAFF",
+          border: "1px solid #00AAFF",
+        }}
+      >
+        Apply Now
+      </button>
     </div>
   );
 };

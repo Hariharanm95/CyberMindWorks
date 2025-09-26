@@ -55,6 +55,9 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
     }
   };
 
+  const inputClass =
+  "w-[376px] h-[58px] border border-gray-200 rounded-[10px] px-3 py-2 text-xs";
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
       <form
@@ -86,7 +89,7 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
             }
           `}</style>
 
-          <h2 className="text-xl flex justify-center font-semibold mb-10 mt-5">
+          <h2 className="text-xl flex justify-center font-semibold mb-[59px] mt-[30px]">
             Create Job Opening
           </h2>
 
@@ -101,7 +104,7 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
           </button>
 
           {/* Job Title & Company Name side by side */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-2 gap-4 mb-[16px]">
             <div>
               <label className="block text-xs font-medium mb-1">Job Title</label>
               <input
@@ -110,7 +113,7 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
                 value={formData.jobTitle}
                 onChange={handleChange}
                 placeholder="Full Stack Developer"
-                className="w-full border border-gray-200 rounded-xl px-3 py-2 text-xs"
+                className={inputClass}
               />
             </div>
 
@@ -122,14 +125,14 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
                 value={formData.companyName}
                 onChange={handleChange}
                 placeholder="Amazon, Microsoft, Swiggy"
-                className="w-full border border-gray-200 text-xs rounded-xl px-3 py-2"
+                className={inputClass}
               />
             </div>
           </div>
 
 
           {/* Location & Location Type */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-2 gap-4 mb-[16px]">
             <div>
               <label className="block text-xs font-medium mb-1">Location</label>
               <input
@@ -138,7 +141,7 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
                 value={formData.location}
                 onChange={handleChange}
                 placeholder="Bangalore"
-                className="w-full border border-gray-200 text-xs rounded-xl px-3 py-2"
+                className={inputClass}
               />
             </div>
 
@@ -150,7 +153,7 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
                 name="locationType"
                 value={formData.locationType}
                 onChange={handleChange}
-                className="w-full border border-gray-200 text-xs rounded-xl px-3 py-2"
+                className={inputClass}
               >
                 <option value="ONSITE">Onsite</option>
                 <option value="REMOTE">Remote</option>
@@ -160,14 +163,14 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
           </div>
 
           {/* Job Type & Salary */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-2 gap-4 mb-[16px]">
             <div>
-              <label className="block text-xs font-medium mb-1">Job Type</label>
+              <label className="block text-xs font-medium mb-1 ">Job Type</label>
               <select
                 name="jobType"
                 value={formData.jobType}
                 onChange={handleChange}
-                className="w-full border border-gray-200 text-xs rounded-xl px-3 py-2"
+                className={inputClass}
               >
                 <option value="FULL_TIME">Full Time</option>
                 <option value="PART_TIME">Part Time</option>
@@ -177,7 +180,7 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
             </div>
 
             <div>
-              <label className="block text-xs font-medium mb-1">
+              <label className="block text-xs font-medium mb-1 ">
                 Salary (in LPA)
               </label>
               <input
@@ -186,13 +189,13 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
                 value={formData.lackPerAnnum}
                 onChange={handleChange}
                 placeholder="12"
-                className="w-full border border-gray-200 text-xs rounded-xl px-3 py-2"
+                className={inputClass}
               />
             </div>
           </div>
 
           {/* Experience */}
-          <div className="mb-6">
+          <div className="mb-[16px]">
             <label className="block text-xs font-medium mb-1">Experience</label>
             <input
               type="text"
@@ -200,12 +203,12 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
               value={formData.experience}
               onChange={handleChange}
               placeholder="2-4 years"
-              className="w-full text-xs border border-gray-200 rounded-xl px-3 py-2"
+              className="w-full h-[58px] text-xs border border-gray-200 rounded-xl px-3 py-2"
             />
           </div>
 
           {/* Job Description */}
-          <div className="mb-6">
+          <div className="mb-[16px]">
             <label className="block text-xs font-medium mb-1">
               Job Description
             </label>
@@ -215,25 +218,25 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
               onChange={handleChange}
               placeholder="Describe the role..."
               rows={3}
-              className="w-full border border-gray-200 text-xs rounded-xl px-3 py-2"
+              className="w-full h-[169px] border border-gray-200 text-xs rounded-xl px-3 py-2"
             />
           </div>
 
           {/* Requirements */}
-          <div className="mb-6">
-            <label className="block text-xs font-medium mb-1">Requirements</label>
+          <div className="mb-[16px]">
+            <label className="block text-xs font-medium mb-1 ">Requirements</label>
             <textarea
               name="requirements"
               value={formData.requirements}
               onChange={handleChange}
               placeholder="List requirements..."
               rows={3}
-              className="w-full border border-gray-200 text-xs rounded-xl px-3 py-2"
+              className="w-full h-[169px] border border-gray-200 text-xs rounded-xl px-3 py-2"
             />
           </div>
 
           {/* Responsibilities */}
-          <div className="mb-6">
+          <div className="mb-[16px]">
             <label className="block text-xs font-medium mb-1">
               Responsibilities
             </label>
@@ -243,12 +246,12 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
               onChange={handleChange}
               placeholder="List responsibilities..."
               rows={3}
-              className="w-full border border-gray-200 text-xs rounded-xl px-3 py-2"
+              className="w-full h-[169px] border border-gray-200 text-xs rounded-xl px-3 py-2"
             />
           </div>
 
           {/* Application Deadline */}
-          <div className="mb-6">
+          <div className="mb-[16px]">
             <label className="block text-xs font-medium mb-1">
               Application Deadline
             </label>
@@ -257,7 +260,7 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
               name="applicationDeadline"
               value={formData.applicationDeadline}
               onChange={handleChange}
-              className="w-full border border-gray-200 text-xs rounded-xl px-3 py-2"
+              className="w-full h-[58px] border border-gray-200 text-xs rounded-xl px-3 py-2"
             />
           </div>
         </div>
@@ -266,13 +269,17 @@ export default function CreateJobForm({ onClose, refreshJobs }: CreateJobFormPro
         <div className="px-6 py-4 flex text-xs justify-between bg-white rounded-b-2xl">
           <button
             type="button"
-            className="border px-4 py-2 rounded-lg hover:bg-gray-100"
+            className="border h-[59px] w-[207px] px-4 py-2 rounded-lg hover:bg-gray-100"
           >
             Save Draft
           </button>
           <button
             type="submit"
-            className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
+            className="bg-gray-900  h-[59px] w-[207px] text-white px-4 py-2 rounded-lg hover:bg-gray-600"
+            style={{
+              background: "#00AAFF",
+              border: "1px solid #00AAFF",
+            }}
           >
             Publish »
           </button>
